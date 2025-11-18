@@ -202,7 +202,6 @@
 
             cb.addEventListener('change', () => setState());
 
-            // initialize state on page load
             setState();
         }
 
