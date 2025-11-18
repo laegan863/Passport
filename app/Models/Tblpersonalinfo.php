@@ -71,4 +71,12 @@ class Tblpersonalinfo extends Model
     {
         return $this->hasOne(Tblverification::class, 'order_id');
     }
+
+    /**
+     * Get the family info for this application
+     */
+    public function familyInfo()
+    {
+        return $this->hasOne(\App\Models\FamilyInfo::class, 'user_id');
+    }
 }

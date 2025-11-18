@@ -138,7 +138,8 @@ class AdminController extends Controller
             'passportDetail',
             'emergencyContact',
             'travelPlan',
-            'verification'
+            'verification',
+            'familyInfo'
         ])->findOrFail($id);
 
         return view('admin.orders.show', compact('order'));

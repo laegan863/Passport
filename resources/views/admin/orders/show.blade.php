@@ -509,6 +509,87 @@
             </div>
         </div>
 
+                <!-- Family Information (skip for renewal passport) -->
+                @if($order->application_type !== 'renewal passport')
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0"><i class="bi bi-people-fill me-2"></i>Family Information</h5>
+                    </div>
+                    <div class="card-body">
+                        @if($order->familyInfo)
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label class="text-muted small">Marital Status</label>
+                                <p class="fw-bold">{{ ucfirst($order->familyInfo->marital_status ?? 'N/A') }}</p>
+                            </div>
+
+                            <div class="col-12"><hr class="my-2"></div>
+                            <div class="col-12 mb-2">
+                                <label class="text-muted small fw-bold">Mother's Details</label>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="text-muted small">First Name</label>
+                                <p class="fw-bold">{{ $order->familyInfo->mother_firstname ?? 'N/A' }}</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="text-muted small">Middle Name</label>
+                                <p class="fw-bold">{{ $order->familyInfo->mother_middlename ?? 'N/A' }}</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="text-muted small">Last Name</label>
+                                <p class="fw-bold">{{ $order->familyInfo->mother_lastname ?? 'N/A' }}</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="text-muted small">Date of Birth</label>
+                                <p class="fw-bold">{{ $order->familyInfo->mother_dob ?? 'N/A' }}</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="text-muted small">US Citizen</label>
+                                <p class="fw-bold">{{ $order->familyInfo->mother_us_citizen ?? 'N/A' }}</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="text-muted small">Country</label>
+                                <p class="fw-bold">{{ $order->familyInfo->mother_country ?? 'N/A' }}</p>
+                            </div>
+
+                            <div class="col-12"><hr class="my-2"></div>
+                            <div class="col-12 mb-2">
+                                <label class="text-muted small fw-bold">Father's Details</label>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="text-muted small">First Name</label>
+                                <p class="fw-bold">{{ $order->familyInfo->father_firstname ?? 'N/A' }}</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="text-muted small">Middle Name</label>
+                                <p class="fw-bold">{{ $order->familyInfo->father_middlename ?? 'N/A' }}</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="text-muted small">Last Name</label>
+                                <p class="fw-bold">{{ $order->familyInfo->father_lastname ?? 'N/A' }}</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="text-muted small">Date of Birth</label>
+                                <p class="fw-bold">{{ $order->familyInfo->father_dob ?? 'N/A' }}</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="text-muted small">US Citizen</label>
+                                <p class="fw-bold">{{ $order->familyInfo->father_us_citizen ?? 'N/A' }}</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="text-muted small">Country</label>
+                                <p class="fw-bold">{{ $order->familyInfo->father_country ?? 'N/A' }}</p>
+                            </div>
+                        </div>
+                        @else
+                        <div class="alert alert-warning mb-0">
+                            <i class="bi bi-exclamation-triangle me-2"></i>No family information available
+                        </div>
+                        @endif
+                    </div>
+                </div>
+                @endif
+
         <!-- Right Column -->
         <div class="col-lg-4">
             <!-- Quick Info -->
