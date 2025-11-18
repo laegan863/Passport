@@ -1,5 +1,27 @@
 @extends('main.app')
 @section('content')
+
+@php
+    $countries = [
+        'United States', 'Philippines',
+        'Afghanistan','Albania','Algeria','Andorra','Angola','Argentina','Armenia','Australia','Austria','Azerbaijan',
+        'Bahamas','Bahrain','Bangladesh','Barbados','Belarus','Belgium','Belize','Benin','Bhutan','Bolivia',
+        'Bosnia and Herzegovina','Botswana','Brazil','Brunei','Bulgaria','Burkina Faso','Burundi','Cambodia','Cameroon',
+        'Canada','Cape Verde','Central African Republic','Chad','Chile','China','Colombia','Comoros','Costa Rica','Croatia',
+        'Cuba','Cyprus','Czech Republic','Denmark','Djibouti','Dominica','Dominican Republic','Ecuador','Egypt','El Salvador',
+        'Equatorial Guinea','Eritrea','Estonia','Ethiopia','Fiji','Finland','France','Gabon','Gambia','Georgia','Germany',
+        'Ghana','Greece','Guatemala','Guinea','Haiti','Honduras','Hong Kong','Hungary','Iceland','India','Indonesia','Iran',
+        'Iraq','Ireland','Israel','Italy','Jamaica','Japan','Jordan','Kazakhstan','Kenya','Kuwait','Kyrgyzstan','Laos',
+        'Latvia','Lebanon','Lesotho','Liberia','Libya','Lithuania','Luxembourg','Macau','Madagascar','Malawi','Malaysia',
+        'Maldives','Mali','Malta','Mexico','Moldova','Monaco','Mongolia','Morocco','Mozambique','Myanmar','Namibia','Nepal',
+        'Netherlands','New Zealand','Nicaragua','Niger','Nigeria','North Korea','Norway','Oman','Pakistan','Panama',
+        'Papua New Guinea','Paraguay','Peru','Poland','Portugal','Qatar','Romania','Russia','Rwanda','Saudi Arabia','Senegal',
+        'Serbia','Singapore','Slovakia','Slovenia','Somalia','South Africa','South Korea','Spain','Sri Lanka','Sudan',
+        'Sweden','Switzerland','Syria','Taiwan','Tajikistan','Tanzania','Thailand','Togo','Tunisia','Turkey','Uganda',
+        'Ukraine','United Arab Emirates','United Kingdom','Uruguay','Uzbekistan','Venezuela','Vietnam','Yemen','Zambia',
+        'Zimbabwe',
+    ];
+@endphp
 <div class="container py-5">
     <div class="text-center mb-4">
         <h4 class="fw-bold">Family Information</h4>
@@ -84,10 +106,12 @@
                 <div class="col-md-4">
                     <label class="form-label">Country</label>
                     <select name="mother_country" class="form-select">
-                        <option value="" {{ old('mother_country') ? '' : 'selected' }}>Select country</option>
-                        <option value="Philippines" {{ old('mother_country') == 'Philippines' ? 'selected' : '' }}>Philippines</option>
-                        <option value="United States" {{ old('mother_country') == 'United States' ? 'selected' : '' }}>United States</option>
-                        <option value="Canada" {{ old('mother_country') == 'Canada' ? 'selected' : '' }}>Canada</option>
+                        <option value="">Select country</option>
+                        @foreach($countries as $country)
+                            <option value="{{ $country }}" {{ old('mother_country', 'United States') == $country ? 'selected' : '' }}>
+                                {{ $country }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -140,10 +164,12 @@
             <div class="col-md-4">
                 <label class="form-label">Country</label>
                     <select name="father_country" class="form-select">
-                        <option value="" {{ old('father_country') ? '' : 'selected' }}>Select country</option>
-                        <option value="Philippines" {{ old('father_country') == 'Philippines' ? 'selected' : '' }}>Philippines</option>
-                        <option value="United States" {{ old('father_country') == 'United States' ? 'selected' : '' }}>United States</option>
-                        <option value="Canada" {{ old('father_country') == 'Canada' ? 'selected' : '' }}>Canada</option>
+                        <option value="">Select country</option>
+                        @foreach($countries as $country)
+                            <option value="{{ $country }}" {{ old('father_country', 'United States') == $country ? 'selected' : '' }}>
+                                {{ $country }}
+                            </option>
+                        @endforeach
                     </select>
             </div>
 
@@ -163,26 +189,24 @@
 </form>
 
 </div>
-<script>
-function toggleSection(checkboxId, prefix) {
-    const cb = document.getElementById(checkboxId);
-    if (!cb) return;
-    const selector = `[name^="${prefix}_"]:not([name="${prefix}_unknown"])`;
-    const fields = document.querySelectorAll(selector);
+    <script>
+        function toggleSection(checkboxId, prefix) {
+            const cb = document.getElementById(checkboxId);
+            if (!cb) return;
+            const selector = `[name^="${prefix}_"]:not([name="${prefix}_unknown"])`;
+            const fields = document.querySelectorAll(selector);
 
-    const setState = () => {
-        fields.forEach(f => f.disabled = cb.checked);
-    };
+            const setState = () => {
+                fields.forEach(f => f.disabled = cb.checked);
+            };
 
-    cb.addEventListener('change', () => setState());
+            cb.addEventListener('change', () => setState());
 
-    // initialize state on page load
-    setState();
-}
+            // initialize state on page load
+            setState();
+        }
 
-toggleSection('motherUnknown', 'mother');
-toggleSection('fatherUnknown', 'father');
-</script>
-</script>
-
+        toggleSection('motherUnknown', 'mother');
+        toggleSection('fatherUnknown', 'father');
+    </script>
 @endsection
