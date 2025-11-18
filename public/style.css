@@ -1,0 +1,70 @@
+.help-box {
+    max-width: 420px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.help-header {
+    background: #163f52;
+    color: white;
+    padding: 15px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.help-list .list-group-item {
+    border: none;
+    padding: 15px 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.2s;
+}
+.help-list .list-group-item:hover {
+    background-color: #f1f5f9;
+}
+.help-list i {
+    margin-right: 12px;
+    font-size: 1.2rem;
+}
+.step-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+}
+.step-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: #198754; /* Bootstrap green */
+    color: #fff;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  background: #198754; /* Bootstrap green */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+.step-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.step-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
